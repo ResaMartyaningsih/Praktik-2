@@ -1,0 +1,315 @@
+Microsoft Windows [Version 10.0.19042.1288]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\RESA>cd..
+
+C:\Users>cd..
+
+C:\>cd xampp
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 33
+Server version: 10.1.38-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database akademik;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> use akademik;
+Database changed
+MariaDB [akademik]> create table mahasiswa(
+    -> nim varchar(5) not null,
+    -> nama varchar(50) not null,
+    -> jkel varchar(1) not null,
+    -> alamat text not null,
+    -> tgllhr date not null,
+    -> primary key(nim)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+MariaDB [akademik]> insert into mahasiswa values ('MHS01','Siti Aminah','P','SOLO','1995-10-01');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [akademik]> insert into mahasiswa values ('MHS02','Rita','P','SOLO','1999-01-01');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [akademik]> insert into mahasiswa values ('MHS03','Amirudin','L','SEMARANG','1998-08-11');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [akademik]> insert into mahasiswa values ('MHS04','Siti Maryam','P','JAKARTA','1995-04-15');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa;
++-------+-------------+------+----------+------------+
+| nim   | nama        | jkel | alamat   | tgllhr     |
++-------+-------------+------+----------+------------+
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 |
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 |
++-------+-------------+------+----------+------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where alamat ='SOLO';
++-------+-------------+------+--------+------------+
+| nim   | nama        | jkel | alamat | tgllhr     |
++-------+-------------+------+--------+------------+
+| MHS01 | Siti Aminah | P    | SOLO   | 1995-10-01 |
+| MHS02 | Rita        | P    | SOLO   | 1999-01-01 |
++-------+-------------+------+--------+------------+
+2 rows in set (0.00 sec)
+
+MariaDB [akademik]> desc mahasiswa;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nim    | varchar(5)  | NO   | PRI | NULL    |       |
+| nama   | varchar(50) | NO   |     | NULL    |       |
+| jkel   | varchar(1)  | NO   |     | NULL    |       |
+| alamat | text        | NO   |     | NULL    |       |
+| tgllhr | date        | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.03 sec)
+
+MariaDB [akademik]> alter table mahasiswa add jurusan varchar(50);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [akademik]> desc mahasiswa;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| nim     | varchar(5)  | NO   | PRI | NULL    |       |
+| nama    | varchar(50) | NO   |     | NULL    |       |
+| jkel    | varchar(1)  | NO   |     | NULL    |       |
+| alamat  | text        | NO   |     | NULL    |       |
+| tgllhr  | date        | NO   |     | NULL    |       |
+| jurusan | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+MariaDB [akademik]> select * from mahasiswa;
++-------+-------------+------+----------+------------+---------+
+| nim   | nama        | jkel | alamat   | tgllhr     | jurusan |
++-------+-------------+------+----------+------------+---------+
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 | NULL    |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 | NULL    |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 | NULL    |
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 | NULL    |
++-------+-------------+------+----------+------------+---------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> desc mahasiswa;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| nim     | varchar(5)  | NO   | PRI | NULL    |       |
+| nama    | varchar(50) | NO   |     | NULL    |       |
+| jkel    | varchar(1)  | NO   |     | NULL    |       |
+| alamat  | text        | NO   |     | NULL    |       |
+| tgllhr  | date        | NO   |     | NULL    |       |
+| jurusan | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+MariaDB [akademik]> select * from mahasiswa;
++-------+-------------+------+----------+------------+---------+
+| nim   | nama        | jkel | alamat   | tgllhr     | jurusan |
++-------+-------------+------+----------+------------+---------+
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 | NULL    |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 | NULL    |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 | NULL    |
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 | NULL    |
++-------+-------------+------+----------+------------+---------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> update mahasiswa set jurusan = 'Teknik Informatika' where nim = 'MHS01';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> update mahasiswa set jurusan = 'Teknik Elekronika' where nim = 'MHS02';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> update mahasiswa set jurusan = 'Teknik Informatika' where nim = 'MHS03';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> update mahasiswa set jurusan = 'Teknik Elekronika' where nim = 'MHS04';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> select * from mahasiswa;
++-------+-------------+------+----------+------------+--------------------+
+| nim   | nama        | jkel | alamat   | tgllhr     | jurusan            |
++-------+-------------+------+----------+------------+--------------------+
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 | Teknik Informatika |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 | Teknik Elekronika  |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 | Teknik Informatika |
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 | Teknik Elekronika  |
++-------+-------------+------+----------+------------+--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where jurusan='Teknik Informatika';
++-------+-------------+------+----------+------------+--------------------+
+| nim   | nama        | jkel | alamat   | tgllhr     | jurusan            |
++-------+-------------+------+----------+------------+--------------------+
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 | Teknik Informatika |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 | Teknik Informatika |
++-------+-------------+------+----------+------------+--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where tgllhr='1999-01-01';
++-------+------+------+--------+------------+-------------------+
+| nim   | nama | jkel | alamat | tgllhr     | jurusan           |
++-------+------+------+--------+------------+-------------------+
+| MHS02 | Rita | P    | SOLO   | 1999-01-01 | Teknik Elekronika |
++-------+------+------+--------+------------+-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where tgllhr like '1999-01-01';
++-------+------+------+--------+------------+-------------------+
+| nim   | nama | jkel | alamat | tgllhr     | jurusan           |
++-------+------+------+--------+------------+-------------------+
+| MHS02 | Rita | P    | SOLO   | 1999-01-01 | Teknik Elekronika |
++-------+------+------+--------+------------+-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where tgllhr like 'teknik';
+Empty set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where nim 'MHS01' and 'MHS02';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''MHS01' and 'MHS02'' at line 1
+MariaDB [akademik]> select * from mahasiswa where nim 'P0001' and 'P0002';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''P0001' and 'P0002'' at line 1
+MariaDB [akademik]> select * from mahasiswa where tgllhr like '%Infor%';
+Empty set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where tgllhr like '%95%';
++-------+-------------+------+---------+------------+--------------------+
+| nim   | nama        | jkel | alamat  | tgllhr     | jurusan            |
++-------+-------------+------+---------+------------+--------------------+
+| MHS01 | Siti Aminah | P    | SOLO    | 1995-10-01 | Teknik Informatika |
+| MHS04 | Siti Maryam | P    | JAKARTA | 1995-04-15 | Teknik Elekronika  |
++-------+-------------+------+---------+------------+--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [akademik]> select nama from mahasiswa;
++-------------+
+| nama        |
++-------------+
+| Siti Aminah |
+| Rita        |
+| Amirudin    |
+| Siti Maryam |
++-------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select nama from mahasiswa limit 2 offset 1;
++----------+
+| nama     |
++----------+
+| Rita     |
+| Amirudin |
++----------+
+2 rows in set (0.00 sec)
+
+MariaDB [akademik]> select nama from mahasiswa limit 2;
++-------------+
+| nama        |
++-------------+
+| Siti Aminah |
+| Rita        |
++-------------+
+2 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa order by nim desc;
++-------+-------------+------+----------+------------+--------------------+
+| nim   | nama        | jkel | alamat   | tgllhr     | jurusan            |
++-------+-------------+------+----------+------------+--------------------+
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 | Teknik Elekronika  |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 | Teknik Informatika |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 | Teknik Elekronika  |
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 | Teknik Informatika |
++-------+-------------+------+----------+------------+--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where alamat='SOLO' and jurusan='Teknik Informatika';
++-------+-------------+------+--------+------------+--------------------+
+| nim   | nama        | jkel | alamat | tgllhr     | jurusan            |
++-------+-------------+------+--------+------------+--------------------+
+| MHS01 | Siti Aminah | P    | SOLO   | 1995-10-01 | Teknik Informatika |
++-------+-------------+------+--------+------------+--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]> select nim,jkel,jurusan from mahasiswa;
++-------+------+--------------------+
+| nim   | jkel | jurusan            |
++-------+------+--------------------+
+| MHS01 | P    | Teknik Informatika |
+| MHS02 | P    | Teknik Elekronika  |
+| MHS03 | L    | Teknik Informatika |
+| MHS04 | P    | Teknik Elekronika  |
++-------+------+--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select nim,jkel,jurusan from mahasiswa where alamat='SOLO';
++-------+------+--------------------+
+| nim   | jkel | jurusan            |
++-------+------+--------------------+
+| MHS01 | P    | Teknik Informatika |
+| MHS02 | P    | Teknik Elekronika  |
++-------+------+--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa order by nama desc;
++-------+-------------+------+----------+------------+--------------------+
+| nim   | nama        | jkel | alamat   | tgllhr     | jurusan            |
++-------+-------------+------+----------+------------+--------------------+
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 | Teknik Elekronika  |
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 | Teknik Informatika |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 | Teknik Elekronika  |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 | Teknik Informatika |
++-------+-------------+------+----------+------------+--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa order by nama asc;
++-------+-------------+------+----------+------------+--------------------+
+| nim   | nama        | jkel | alamat   | tgllhr     | jurusan            |
++-------+-------------+------+----------+------------+--------------------+
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 | Teknik Informatika |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 | Teknik Elekronika  |
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 | Teknik Informatika |
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 | Teknik Elekronika  |
++-------+-------------+------+----------+------------+--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa where nama='Siti Maryam';
++-------+-------------+------+---------+------------+-------------------+
+| nim   | nama        | jkel | alamat  | tgllhr     | jurusan           |
++-------+-------------+------+---------+------------+-------------------+
+| MHS04 | Siti Maryam | P    | JAKARTA | 1995-04-15 | Teknik Elekronika |
++-------+-------------+------+---------+------------+-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]> update mahasiswa set jurusan='Matematika' where nama='Siti Maryam';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> select * from mahasiswa where nama='Siti Maryam';
++-------+-------------+------+---------+------------+------------+
+| nim   | nama        | jkel | alamat  | tgllhr     | jurusan    |
++-------+-------------+------+---------+------------+------------+
+| MHS04 | Siti Maryam | P    | JAKARTA | 1995-04-15 | Matematika |
++-------+-------------+------+---------+------------+------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]>
